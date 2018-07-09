@@ -4,11 +4,19 @@ import {Component} from '@angular/core';
   selector: 'app-root',
   styleUrls: ['app.component.scss'],
   template: `
-    <div [innerHtml]="title"></div>
     <input 
     [value]="title"
-    (blur) = "handle($event)">
-    <input [(ngModel)]="title">
+    (input) = "handle($event)">
+
+    <template [ngIf] = "title.length > 2">
+      <div>
+        Searching for ... {{ title }}
+      </div>
+    </template>
+
+    <div *ngIf="title.length > 2">
+      Searching for ... {{ title }}
+    </div>
   `
 })
 
@@ -16,15 +24,10 @@ export class AppComponent {
   title: string;
 
   constructor() {
-    this.title = 'Kaushik\'s Ultimate Angular';
+    this.title = '';
   }
 
   handle(event: any) {
     this.title = event.target.value;
   }
-
-  magic(value: any) {
-    this.title = value;
-  }
-
 }
