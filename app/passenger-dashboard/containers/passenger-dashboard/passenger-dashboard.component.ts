@@ -38,8 +38,12 @@ export class PassengerDashboardComponent implements OnInit {
             });
     }
     handleRemove(event: Passenger) {
-        this.passengers = this.passengers.filter((pass: Passenger) => {
-            return pass.id != event.id;
-        })
+        this.passengerService
+            .deletePassenger(event)
+            .subscribe((data: Passenger) => {
+                this.passengers = this.passengers.filter((pass: Passenger) => {
+                    return pass.id != event.id;
+                })
+            })
     }
 }

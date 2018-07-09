@@ -25,4 +25,11 @@ export class PassengerDashboardService {
             .put(`${URL}/${passenger.id}`, passenger)
             .map((response: Response) => response.json()); 
     }
+
+    deletePassenger(passenger: Passenger): Observable<Passenger> {
+        console.log(passenger);
+        return this.http
+            .delete(`${URL}/${passenger.id}`)
+            .map((response: Response) => response.json()); 
+    }
 }
