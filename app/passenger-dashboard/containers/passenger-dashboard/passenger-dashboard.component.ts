@@ -56,9 +56,12 @@ export class PassengerDashboardComponent implements OnInit {
         }];
     }
     handleEdit(event) {
+        // Not implemented because I don't see value in adding the logic here
         console.log(event);
     }
-    handleRemove(event) {
-        console.log(event);
+    handleRemove(event: Passenger) {
+        this.passengers = this.passengers.filter((pass: Passenger) => {
+            return pass.id != event.id;
+        })
     }
 }
