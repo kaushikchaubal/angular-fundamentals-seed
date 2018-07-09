@@ -8,7 +8,8 @@ import { Passenger } from "../../models/passenger.interface";
     template: `
         <div>
             <passenger-form
-                [detail]="passenger">
+                [detail]="passenger"
+                (update)="onPassengerUpdate($event)">
             </passenger-form>
         </div>
     `
@@ -22,5 +23,14 @@ export class PassengerViewerComponent implements OnInit {
         this.passengerService
             .getPassenger(1)
             .then((data: Passenger) => this.passenger = data);
+    }
+
+    onPassengerUpdate(passenger: Passenger) {
+        this.passengerService
+            .updatePassenger(passenger)
+            .then((data: Passenger) => {
+                this.passenger = data
+                console.log(data);
+            });
     }
 }
