@@ -39,4 +39,11 @@ export class PassengerDashboardService {
             .then((response: Response) => response.json());
     }
 
+    getPassenger(id: number): Promise<Passenger> {
+        return this.http
+            .get(`${PASSENGER_API}/${id}`)
+            .toPromise()
+            .then((response: Response) => response.json());
+    }
+
 }
