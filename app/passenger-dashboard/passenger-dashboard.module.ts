@@ -8,7 +8,11 @@ import {PassengerDetailComponent} from './components/passenger-detail/passenger-
 import { PassengerDashboardService } from './passenger-dashboard.service';
 import { PassengerViewerComponent } from './containers/passenger-viewer/passenger-viewer.component';
 import { PassengerFormComponent } from './components/passenger-form/passenger-form.component';
+import { RouterModule, Routes } from '@angular/router'
 
+const routes: Routes = [
+    {path: 'passengers', component: PassengerDashboardComponent}
+]
 
 @NgModule({
     declarations: [
@@ -21,10 +25,8 @@ import { PassengerFormComponent } from './components/passenger-form/passenger-fo
     imports: [
         CommonModule,
         HttpModule,
-        FormsModule
-    ], 
-    exports: [
-        PassengerViewerComponent
+        FormsModule,
+        RouterModule.forChild(routes)
     ],
     providers: [
         PassengerDashboardService
