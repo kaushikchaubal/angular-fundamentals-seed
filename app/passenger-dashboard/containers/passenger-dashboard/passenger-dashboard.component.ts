@@ -26,21 +26,21 @@ export class PassengerDashboardComponent implements OnInit {
     ngOnInit() {
         this.passengerService
             .getPassengers()
-            .subscribe((data: Passenger[]) => this.passengers = data);
+            .then((data: Passenger[]) => this.passengers = data);
     }
     handleEdit(event: Passenger) {
         // Not implemented because I don't see value in adding the logic here
         console.log(event);
         this.passengerService
             .updatePassenger(event)
-            .subscribe((data: Passenger) => {
+            .then((data: Passenger) => {
                 console.log(data)
             });
     }
     handleRemove(event: Passenger) {
         this.passengerService
             .deletePassenger(event)
-            .subscribe((data: Passenger) => {
+            .then((data: Passenger) => {
                 this.passengers = this.passengers.filter((pass: Passenger) => {
                     return pass.id != event.id;
                 })
