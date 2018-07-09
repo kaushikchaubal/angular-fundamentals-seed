@@ -18,4 +18,11 @@ export class PassengerDashboardService {
             .get(URL)
             .map((response: Response) => response.json()); 
     }
+
+    updatePassenger(passenger: Passenger): Observable<Passenger> {
+        console.log(passenger);
+        return this.http
+            .put(`${URL}/${passenger.id}`, passenger)
+            .map((response: Response) => response.json()); 
+    }
 }

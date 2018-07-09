@@ -28,9 +28,14 @@ export class PassengerDashboardComponent implements OnInit {
             .getPassengers()
             .subscribe((data: Passenger[]) => this.passengers = data);
     }
-    handleEdit(event) {
+    handleEdit(event: Passenger) {
         // Not implemented because I don't see value in adding the logic here
         console.log(event);
+        this.passengerService
+            .updatePassenger(event)
+            .subscribe((data: Passenger) => {
+                console.log(data)
+            });
     }
     handleRemove(event: Passenger) {
         this.passengers = this.passengers.filter((pass: Passenger) => {
