@@ -8,6 +8,7 @@ import {Component} from '@angular/core';
     <input 
     [value]="title"
     (blur) = "handle($event)">
+    <input [(ngModel)]="title">
   `
 })
 
@@ -20,6 +21,10 @@ export class AppComponent {
 
   handle(event: any) {
     this.title = event.target.value;
+  }
+
+  magic(value: any) {
+    this.title = value;
   }
 
 }
