@@ -5,7 +5,9 @@ import {Component} from '@angular/core';
   styleUrls: ['app.component.scss'],
   template: `
     <div [innerHtml]="title"></div>
-    <input [value]="title">
+    <input 
+    [value]="title"
+    (blur) = "handle($event)">
   `
 })
 
@@ -14,6 +16,10 @@ export class AppComponent {
 
   constructor() {
     this.title = 'Kaushik\'s Ultimate Angular';
+  }
+
+  handle(event: any) {
+    this.title = event.target.value;
   }
 
 }
